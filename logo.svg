@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Dark green background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#0d2818"/>
+      <stop offset="100%" stop-color="#060d08"/>
+    </radialGradient>
+
+    <!-- Thread glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft glow for needle -->
+    <filter id="needleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- W thread path -->
+    <path id="wPath" d="M22,38 L35,75 L48,50 L61,75 L74,38"/>
+
+    <!-- Clip path to animate thread drawing -->
+    <clipPath id="threadClip">
+      <rect x="0" y="0" width="0" height="120">
+        <animate attributeName="width" from="0" to="120" dur="1.8s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="url(#bgGrad)"/>
+
+  <!-- Subtle inner ring -->
+  <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(74,222,128,0.08)" stroke-width="1"/>
+
+  <!-- ── THREAD (W shape) - glowing lime, draws in via clip ── -->
+  <!-- Glow layer (fat, blurred) -->
+  <use href="#wPath" clip-path="url(#threadClip)" fill="none"
+       stroke="#a3e635" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+       filter="url(#glow)" opacity="0.5"/>
+
+  <!-- Main thread -->
+  <use href="#wPath" clip-path="url(#threadClip)" fill="none"
+       stroke="#a3e635" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+       filter="url(#glow)"/>
+
+  <!-- Bright core highlight -->
+  <use href="#wPath" clip-path="url(#threadClip)" fill="none"
+       stroke="#ecfccb" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ── NEEDLE ── -->
+  <g filter="url(#needleGlow)">
+    <!-- Needle body -->
+    <line x1="74" y1="36" x2="92" y2="88"
+          stroke="#d1d5db" stroke-width="2.2" stroke-linecap="round">
+      <!-- Needle travels along with drawing -->
+      <animateMotion dur="1.8s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1">
+        <mpath href="#wPath"/>
+      </animateMotion>
+    </line>
+
+    <!-- Needle group (moves along W path) -->
+    <g>
+      <animateMotion dur="1.8s" begin="0.3s" fill="freeze" rotate="auto" calcMode="spline" keySplines="0.4 0 0.2 1">
+        <mpath href="#wPath"/>
+      </animateMotion>
+      <!-- Needle shape (centered at origin for motion) -->
+      <g transform="translate(0,0)">
+        <!-- Needle body -->
+        <rect x="-1" y="-18" width="2.2" height="34" rx="1.1" fill="#e5e7eb"/>
+        <!-- Needle tip -->
+        <polygon points="0,-22 -1.1,-18 1.1,-18" fill="#f3f4f6"/>
+        <!-- Needle eye (hole) -->
+        <ellipse cx="0" cy="11" rx="1" ry="2" fill="#060d08" stroke="#9ca3af" stroke-width="0.4"/>
+        <!-- Thread through eye -->
+        <line x1="0" y1="9" x2="-4" y2="14" stroke="#a3e635" stroke-width="0.9" stroke-linecap="round" opacity="0.9"/>
+        <line x1="0" y1="9" x2="4" y2="14" stroke="#a3e635" stroke-width="0.9" stroke-linecap="round" opacity="0.9"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ── IDLE PULSE after draw ── -->
+  <!-- Soft glow pulse on the W after animation -->
+  <use href="#wPath" fill="none"
+       stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+       opacity="0">
+    <animate attributeName="opacity" values="0;0;0.3;0;0.3;0" dur="3s" begin="2.2s" repeatCount="indefinite"/>
+  </use>
+
+  <!-- ── SPARKLE DOTS ── (appear after needle reaches end) -->
+  <g opacity="0">
+    <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.1s" fill="freeze"/>
+    <!-- Dot 1 -->
+    <circle cx="74" cy="38" r="2.5" fill="#bef264">
+      <animate attributeName="r" values="0;3.5;2;2" dur="0.6s" begin="2.1s" fill="freeze"/>
+      <animate attributeName="opacity" values="1;1;0.7;0" dur="1.5s" begin="2.4s" fill="freeze"/>
+    </circle>
+    <!-- Dot 2 -->
+    <circle cx="76" cy="33" r="1.2" fill="#a3e635">
+      <animate attributeName="r" values="0;2;1;1" dur="0.5s" begin="2.2s" fill="freeze"/>
+      <animate attributeName="opacity" values="1;1;0" dur="1.2s" begin="2.5s" fill="freeze"/>
+    </circle>
+    <!-- Dot 3 -->
+    <circle cx="79" cy="37" r="1" fill="#ecfccb">
+      <animate attributeName="r" values="0;1.8;0.8" dur="0.4s" begin="2.3s" fill="freeze"/>
+      <animate attributeName="opacity" values="1;0.8;0" dur="1s" begin="2.6s" fill="freeze"/>
+    </circle>
+  </g>
+</svg>

@@ -3,28 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#09040f" />
     <title>Weavr – Weave Your Special Moments</title>
-    <meta name="description" content="Weavr is the fastest way to turn your photos into stunning social media posts for birthdays, anniversaries, and every special day." />
+    <meta name="description" content="Weavr is the simplest way to turn your photos into beautiful social media posts for every special day." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --bg:        #09040f;
-        --bg-card:   #130d1f;
-        --bg-card2:  #1a1029;
-        --border:    rgba(255,255,255,0.08);
-        --purple:    #a855f7;
-        --purple-lt: #c084fc;
-        --pink:      #ec4899;
-        --gold:      #f59e0b;
-        --text:      #f1f0f5;
-        --muted:     #8b7fa0;
-        --radius:    18px;
-        --glow:      rgba(168, 85, 247, 0.35);
+        --bg:       #faf8f4;
+        --bg-alt:   #f3f0ea;
+        --bg-card:  #ffffff;
+        --border:   rgba(0,0,0,0.07);
+        --sage:     #7a9e7e;
+        --sage-lt:  #a8c5a0;
+        --sage-dk:  #4a7050;
+        --text:     #1c2421;
+        --muted:    #7a8a82;
+        --warm:     #f0ece3;
+        --radius:   20px;
       }
 
       html { scroll-behavior: smooth; }
@@ -37,204 +35,188 @@
         overflow-x: hidden;
       }
 
-      /* ── NOISE OVERLAY ── */
+      /* ── SUBTLE TEXTURE ── */
       body::before {
         content: '';
         position: fixed;
         inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237a9e7e' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         pointer-events: none;
         z-index: 0;
-        opacity: 0.5;
+        opacity: 0.6;
       }
 
-      /* ── GLOW BLOBS ── */
-      .blob {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.18;
-        animation: float-blob 12s ease-in-out infinite alternate;
-      }
-      .blob-1 { width: 600px; height: 600px; background: var(--purple); top: -200px; left: -150px; }
-      .blob-2 { width: 500px; height: 500px; background: var(--pink);   bottom: 0;    right: -100px; animation-delay: -5s; }
-      .blob-3 { width: 400px; height: 400px; background: var(--gold);   top: 40%;     left: 40%;     opacity: 0.10; animation-delay: -9s; }
-
-      @keyframes float-blob {
-        from { transform: translate(0,0) scale(1); }
-        to   { transform: translate(30px, 20px) scale(1.08); }
-      }
-
-      /* ── HEADER / NAV ── */
+      /* ── HEADER ── */
       .site-header {
         position: fixed;
         top: 0; left: 0; right: 0;
         z-index: 100;
-        padding: 0 24px;
+        padding: 0 32px;
+        background: rgba(250,248,244,0.85);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        background: rgba(9,4,15,0.6);
         border-bottom: 1px solid var(--border);
         transition: background 0.3s;
       }
 
       .nav-shell {
-        max-width: 1100px;
+        max-width: 1080px;
         margin: 0 auto;
         display: flex;
         align-items: center;
         gap: 32px;
-        height: 64px;
+        height: 68px;
       }
 
       .brand {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 11px;
         text-decoration: none;
-        font-size: 1.25rem;
-        font-weight: 800;
         color: var(--text);
-        letter-spacing: -0.02em;
       }
 
-      .brand-icon {
+      .brand-logo {
         width: 36px; height: 36px;
-        background: linear-gradient(135deg, var(--purple), var(--pink));
-        border-radius: 10px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .brand-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--text);
       }
 
       .desktop-nav {
         display: flex;
-        gap: 8px;
+        gap: 4px;
         margin-left: auto;
       }
 
       .desktop-nav a {
         color: var(--muted);
         text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        padding: 6px 14px;
-        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 400;
+        padding: 6px 16px;
+        border-radius: 50px;
         transition: color 0.2s, background 0.2s;
+        letter-spacing: 0.01em;
       }
-      .desktop-nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+      .desktop-nav a:hover { color: var(--text); background: rgba(0,0,0,0.04); }
 
       .btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 10px 22px;
+        padding: 10px 24px;
         border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 700;
+        font-size: 0.85rem;
+        font-weight: 500;
         text-decoration: none;
         border: none;
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+        transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+        letter-spacing: 0.02em;
+        font-family: 'Inter', sans-serif;
       }
       .btn:hover { transform: translateY(-2px); }
       .btn:active { transform: translateY(0); }
 
       .btn-primary {
-        background: linear-gradient(135deg, var(--purple), var(--pink));
+        background: var(--sage-dk);
         color: #fff;
-        box-shadow: 0 4px 24px rgba(168,85,247,0.4);
+        box-shadow: 0 2px 16px rgba(74,112,80,0.2);
       }
-      .btn-primary:hover { box-shadow: 0 8px 32px rgba(168,85,247,0.6); }
+      .btn-primary:hover { background: var(--sage); box-shadow: 0 6px 24px rgba(74,112,80,0.3); }
 
-      .btn-secondary {
-        background: rgba(255,255,255,0.07);
+      .btn-outline {
+        background: transparent;
         color: var(--text);
-        border: 1px solid var(--border);
+        border: 1px solid rgba(0,0,0,0.15);
       }
-      .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+      .btn-outline:hover { background: rgba(0,0,0,0.04); }
 
       /* ── HERO ── */
       .hero {
         position: relative;
-        padding: 140px 24px 80px;
+        padding: 160px 32px 100px;
         z-index: 1;
+        text-align: center;
       }
 
       .section-shell {
-        max-width: 1100px;
+        max-width: 1080px;
         margin: 0 auto;
       }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-      }
-
-      .hero-kicker {
+      .hero-badge {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(168,85,247,0.12);
-        border: 1px solid rgba(168,85,247,0.3);
+        gap: 7px;
+        background: var(--warm);
+        border: 1px solid rgba(122,158,126,0.2);
         border-radius: 50px;
-        padding: 6px 16px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--purple-lt);
-        margin-bottom: 20px;
-        letter-spacing: 0.02em;
+        padding: 6px 18px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--sage-dk);
+        margin-bottom: 28px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
       }
 
-      .live-dot {
-        width: 8px; height: 8px;
-        background: #4ade80;
+      .pulse {
+        width: 7px; height: 7px;
+        background: var(--sage);
         border-radius: 50%;
         display: inline-block;
-        animation: pulse-dot 2s infinite;
+        animation: pulse 2.5s ease-in-out infinite;
       }
 
-      @keyframes pulse-dot {
+      @keyframes pulse {
         0%, 100% { opacity: 1; transform: scale(1); }
-        50%       { opacity: 0.5; transform: scale(0.8); }
+        50%       { opacity: 0.4; transform: scale(0.75); }
       }
 
       .hero h1 {
-        font-size: clamp(2.2rem, 5vw, 3.8rem);
-        font-weight: 900;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        font-weight: 300;
         line-height: 1.1;
-        letter-spacing: -0.04em;
-        margin-bottom: 20px;
+        letter-spacing: -0.01em;
+        color: var(--text);
+        margin-bottom: 24px;
       }
 
-      .hero h1 span {
-        background: linear-gradient(135deg, var(--purple-lt), var(--pink));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .hero h1 em {
+        font-style: italic;
+        color: var(--sage-dk);
       }
 
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: var(--muted);
-        margin-bottom: 36px;
-        max-width: 460px;
-        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        line-height: 1.75;
+        font-weight: 300;
       }
 
       .hero-actions {
         display: flex;
         gap: 12px;
+        justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 40px;
+        margin-bottom: 64px;
       }
 
       .hero-trust {
         display: flex;
-        gap: 20px;
+        gap: 32px;
+        justify-content: center;
         list-style: none;
         flex-wrap: wrap;
       }
@@ -243,488 +225,550 @@
         display: flex;
         align-items: center;
         gap: 7px;
-        font-size: 0.82rem;
-        font-weight: 500;
+        font-size: 0.8rem;
         color: var(--muted);
+        font-weight: 400;
       }
 
-      .hero-trust svg { color: var(--purple-lt); flex-shrink: 0; }
+      .trust-dot {
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: var(--sage-lt);
+        flex-shrink: 0;
+      }
 
-      /* ── PHONE VISUAL ── */
+      /* ── PHONE MOCKUP ── */
       .hero-visual {
-        position: relative;
+        margin-top: 72px;
         display: flex;
         justify-content: center;
-        align-items: center;
-      }
-
-      .phone-frame {
+        gap: 20px;
+        align-items: flex-end;
         position: relative;
-        width: 240px;
-        background: #1a1029;
-        border-radius: 40px;
-        border: 2px solid rgba(255,255,255,0.12);
-        box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 0 2px rgba(255,255,255,0.04);
-        padding: 16px 12px;
-        animation: float-phone 4s ease-in-out infinite alternate;
       }
 
-      @keyframes float-phone {
+      .phone-wrap {
+        position: relative;
+        animation: gentle-float 5s ease-in-out infinite alternate;
+      }
+
+      .phone-wrap.delay { animation-delay: -2.5s; transform: scale(0.88); }
+
+      @keyframes gentle-float {
         from { transform: translateY(0); }
-        to   { transform: translateY(-16px); }
+        to   { transform: translateY(-12px); }
       }
 
-      .phone-notch {
-        width: 80px; height: 26px;
-        background: #09040f;
-        border-radius: 0 0 18px 18px;
-        margin: 0 auto 12px;
+      .phone-wrap.delay {
+        animation: gentle-float-sm 5s ease-in-out infinite alternate;
+        animation-delay: -2.5s;
+      }
+
+      @keyframes gentle-float-sm {
+        from { transform: scale(0.88) translateY(0); }
+        to   { transform: scale(0.88) translateY(-12px); }
+      }
+
+      .phone {
+        width: 200px;
+        background: #fff;
+        border-radius: 36px;
+        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 24px 64px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+        padding: 14px 10px;
+        position: relative;
+      }
+
+      .phone-bar {
+        width: 60px; height: 22px;
+        background: var(--bg);
+        border-radius: 0 0 14px 14px;
+        margin: 0 auto 10px;
       }
 
       .phone-screen {
-        background: linear-gradient(160deg, #1e1033 0%, #0f0720 100%);
+        background: var(--bg);
         border-radius: 24px;
-        padding: 20px 16px;
-        min-height: 380px;
+        overflow: hidden;
+        padding: 14px 12px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        overflow: hidden;
+        gap: 8px;
+        min-height: 320px;
       }
 
-      .phone-app-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.65rem;
-        color: var(--muted);
+      .phone-tag {
+        font-size: 0.55rem;
         font-weight: 600;
+        color: var(--sage-dk);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      .phone-photo-grid {
+      .phone-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 6px;
+        gap: 5px;
         flex: 1;
       }
 
       .phone-photo {
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .phone-photo-big {
-        grid-column: span 2;
-        height: 100px;
-      }
-
-      .phone-photo-sm { height: 70px; }
-
-      .phone-photo-fill {
-        width: 100%; height: 100%;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
 
-      .photo-1 { background: linear-gradient(135deg, #6d28d9, #db2777); }
-      .photo-2 { background: linear-gradient(135deg, #0ea5e9, #6d28d9); }
-      .photo-3 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+      .phone-photo-tall { grid-row: span 2; }
+      .pp1 { background: #e8efe9; }
+      .pp2 { background: #f0ece3; }
+      .pp3 { background: #e4ede8; }
+      .pp4 { background: #ede8f0; }
+      .pp5 { background: #f0e8e8; }
 
-      .phone-overlay-tag {
-        position: absolute;
-        bottom: 6px; left: 6px;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(4px);
-        border-radius: 6px;
-        font-size: 0.55rem;
-        font-weight: 700;
-        color: #fff;
-        padding: 2px 6px;
-      }
-
-      .phone-caption {
-        background: rgba(255,255,255,0.06);
+      .phone-caption-box {
+        background: #fff;
         border-radius: 10px;
-        padding: 10px 12px;
-        font-size: 0.65rem;
+        padding: 8px 10px;
+        font-size: 0.58rem;
         color: var(--muted);
         line-height: 1.5;
+        border: 1px solid var(--border);
       }
 
-      .phone-caption span {
-        color: var(--purple-lt);
-        font-weight: 700;
-      }
+      .phone-caption-box strong { color: var(--sage-dk); font-weight: 600; }
 
-      .phone-action-btn {
-        background: linear-gradient(135deg, var(--purple), var(--pink));
-        border-radius: 12px;
-        padding: 10px;
+      .phone-btn {
+        background: var(--sage-dk);
+        border-radius: 10px;
+        padding: 9px 10px;
         text-align: center;
-        font-size: 0.65rem;
-        font-weight: 700;
+        font-size: 0.6rem;
+        font-weight: 600;
         color: #fff;
         letter-spacing: 0.04em;
       }
 
-      /* ── FLOAT CARDS ── */
-      .float-card {
-        position: absolute;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 12px 16px;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      /* ── DIVIDER ── */
+      .divider {
         display: flex;
         align-items: center;
-        gap: 10px;
-        white-space: nowrap;
-        animation: float-phone 4s ease-in-out infinite alternate;
+        gap: 20px;
+        max-width: 300px;
+        margin: 80px auto;
+        z-index: 1;
+        position: relative;
       }
-
-      .float-card-1 {
-        top: 20px; right: -60px;
-        animation-delay: -1s;
-        font-size: 0.78rem;
-        font-weight: 700;
+      .divider::before, .divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
       }
-
-      .float-card-2 {
-        bottom: 80px; left: -70px;
-        animation-delay: -2s;
-        font-size: 0.78rem;
-        font-weight: 700;
-      }
-
-      .float-card-3 {
-        bottom: 20px; right: -50px;
-        animation-delay: -3s;
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: var(--muted);
-      }
-
-      .float-emoji { font-size: 1.2rem; }
-
-      .float-badge {
-        background: linear-gradient(135deg, var(--purple), var(--pink));
-        border-radius: 8px;
-        padding: 4px 8px;
-        font-size: 0.65rem;
-        font-weight: 700;
-        color: #fff;
+      .divider-icon {
+        color: var(--sage-lt);
+        font-size: 1rem;
       }
 
       /* ── MARQUEE ── */
       .marquee-wrap {
-        padding: 32px 0;
+        padding: 28px 0;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
         overflow: hidden;
         position: relative;
         z-index: 1;
-        margin-top: 40px;
+        background: var(--warm);
       }
 
       .marquee-track {
         display: flex;
         width: max-content;
-        animation: marquee-scroll 30s linear infinite;
-        gap: 0;
+        animation: marquee 28s linear infinite;
       }
 
       .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
 
-      @keyframes marquee-scroll {
+      @keyframes marquee {
         from { transform: translateX(0); }
         to   { transform: translateX(-50%); }
       }
 
-      .marquee-list {
-        display: flex;
-        list-style: none;
-        gap: 0;
-      }
+      .marquee-list { display: flex; list-style: none; }
 
       .marquee-item {
         display: flex;
         align-items: center;
         gap: 10px;
         padding: 0 28px;
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 0.82rem;
+        font-weight: 400;
         color: var(--muted);
         border-right: 1px solid var(--border);
-        transition: color 0.2s;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
       }
 
-      .marquee-item:hover { color: var(--text); }
-      .marquee-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+      .m-dot {
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: var(--sage-lt);
+        flex-shrink: 0;
+      }
 
       /* ── SECTION COMMONS ── */
       section { position: relative; z-index: 1; }
 
-      .section-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--purple-lt);
+      .section-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--sage-dk);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         margin-bottom: 12px;
       }
 
       .section-title {
-        font-size: clamp(1.8rem, 4vw, 2.8rem);
-        font-weight: 900;
-        letter-spacing: -0.03em;
-        line-height: 1.1;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 400;
+        letter-spacing: 0em;
+        line-height: 1.15;
         margin-bottom: 16px;
+        color: var(--text);
+      }
+
+      .section-title em {
+        font-style: italic;
+        color: var(--sage-dk);
       }
 
       .section-desc {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: var(--muted);
-        max-width: 560px;
-        line-height: 1.7;
+        max-width: 520px;
+        line-height: 1.8;
+        font-weight: 300;
       }
 
       /* ── HOW IT WORKS ── */
-      .how-section { padding: 100px 24px; }
-
-      .how-header { text-align: center; margin-bottom: 60px; }
-      .how-header .section-desc { margin: 0 auto; }
-
-      .steps-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-
-      .step-card {
+      .how-section {
+        padding: 100px 32px;
         background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 36px 28px;
-        position: relative;
-        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        overflow: hidden;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
       }
 
-      .step-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(168,85,247,0.06), transparent);
-        opacity: 0;
+      .how-inner {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .steps-list { display: flex; flex-direction: column; gap: 36px; }
+
+      .step {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding-bottom: 36px;
+        border-bottom: 1px solid var(--border);
         transition: opacity 0.3s;
       }
 
-      .step-card:hover { transform: translateY(-6px); border-color: rgba(168,85,247,0.3); box-shadow: 0 20px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(168,85,247,0.1); }
-      .step-card:hover::before { opacity: 1; }
+      .step:last-child { border-bottom: none; padding-bottom: 0; }
 
       .step-num {
-        font-size: 4rem;
-        font-weight: 900;
-        color: rgba(168,85,247,0.12);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: var(--sage-lt);
         line-height: 1;
-        margin-bottom: 16px;
-        letter-spacing: -0.04em;
+        min-width: 36px;
+        padding-top: 2px;
       }
 
-      .step-icon {
-        width: 52px; height: 52px;
-        border-radius: 14px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
+      .step-body h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--text);
+        letter-spacing: -0.01em;
       }
 
-      .step-card h3 {
-        font-size: 1.15rem;
-        font-weight: 800;
-        margin-bottom: 10px;
-        letter-spacing: -0.02em;
+      .step-body p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.7;
+        font-weight: 300;
       }
 
-      .step-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+      /* Right-side large visual card */
+      .how-visual {
+        background: var(--bg);
+        border-radius: var(--radius);
+        padding: 40px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.04);
+      }
+
+      .how-visual-row {
+        display: flex;
+        gap: 12px;
+      }
+
+      .how-chip {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 8px 18px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .how-chip.active, .how-chip:hover {
+        background: var(--sage-dk);
+        border-color: var(--sage-dk);
+        color: #fff;
+      }
+
+      .how-preview {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        flex: 1;
+      }
+
+      .how-preview-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .how-photo {
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+      }
+
+      .how-photo-main { height: 110px; background: #e8efe9; }
+      .how-photo-sm1  { height: 52px;  background: #f0ece3; }
+      .how-photo-sm2  { height: 52px;  background: #e4ede8; }
+
+      .how-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--sage-dk);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+      }
+
+      .how-text {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.6;
+        font-style: italic;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem;
+      }
 
       /* ── FEATURES ── */
-      .features-section { padding: 80px 24px 100px; }
+      .features-section {
+        padding: 100px 32px;
+      }
+
+      .features-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: end;
+        margin-bottom: 60px;
+      }
 
       .features-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-top: 60px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
       }
 
       .feature-card {
         background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 32px;
-        transition: transform 0.3s, border-color 0.3s;
-        position: relative;
-        overflow: hidden;
+        padding: 36px 32px;
+        transition: background 0.3s;
       }
 
-      .feature-card-wide { grid-column: span 2; }
-
-      .feature-card:hover { transform: translateY(-4px); border-color: rgba(168,85,247,0.25); }
+      .feature-card:hover { background: var(--warm); }
 
       .feature-icon {
-        width: 48px; height: 48px;
-        border-radius: 12px;
-        display: flex; align-items: center; justify-content: center;
         font-size: 1.4rem;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
+        display: block;
       }
-
-      .fi-purple { background: rgba(168,85,247,0.15); }
-      .fi-pink   { background: rgba(236,72,153,0.15); }
-      .fi-gold   { background: rgba(245,158,11,0.15); }
-      .fi-teal   { background: rgba(20,184,166,0.15); }
-      .fi-blue   { background: rgba(59,130,246,0.15); }
 
       .feature-card h3 {
-        font-size: 1.05rem;
-        font-weight: 800;
+        font-size: 0.95rem;
+        font-weight: 600;
         margin-bottom: 8px;
-        letter-spacing: -0.02em;
+        color: var(--text);
+        letter-spacing: -0.01em;
       }
 
-      .feature-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+      .feature-card p {
+        font-size: 0.83rem;
+        color: var(--muted);
+        line-height: 1.7;
+        font-weight: 300;
+      }
 
       .feature-tag {
         display: inline-block;
-        margin-top: 16px;
-        background: rgba(168,85,247,0.1);
-        border: 1px solid rgba(168,85,247,0.2);
+        margin-top: 14px;
+        background: rgba(122,158,126,0.1);
+        border: 1px solid rgba(122,158,126,0.2);
         border-radius: 50px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: var(--purple-lt);
-        padding: 4px 12px;
+        font-size: 0.68rem;
+        font-weight: 500;
+        color: var(--sage-dk);
+        padding: 3px 12px;
+        letter-spacing: 0.02em;
       }
 
       /* ── OCCASIONS ── */
-      .occasions-section { padding: 80px 24px 100px; }
+      .occasions-section {
+        padding: 100px 32px;
+        background: var(--warm);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
 
       .occasions-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin-top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 48px;
       }
 
-      .occasion-card {
-        background: var(--bg-card);
+      .occasion-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
         border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 28px 20px;
-        text-align: center;
-        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        border-radius: 50px;
+        padding: 10px 22px;
+        font-size: 0.88rem;
+        font-weight: 400;
+        color: var(--text);
         cursor: pointer;
+        transition: all 0.25s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       }
 
-      .occasion-card:hover {
-        transform: translateY(-6px) scale(1.02);
-        border-color: rgba(168,85,247,0.3);
-        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      .occasion-pill:hover {
+        background: var(--sage-dk);
+        color: #fff;
+        border-color: var(--sage-dk);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(74,112,80,0.2);
       }
-
-      .occasion-emoji { font-size: 2.5rem; margin-bottom: 12px; display: block; }
-
-      .occasion-card h3 {
-        font-size: 0.9rem;
-        font-weight: 700;
-        margin-bottom: 6px;
-      }
-
-      .occasion-card p { font-size: 0.78rem; color: var(--muted); }
 
       /* ── CTA ── */
       .cta-section {
-        padding: 100px 24px;
+        padding: 120px 32px;
         text-align: center;
       }
 
-      .cta-box {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 28px;
-        padding: 80px 40px;
-        max-width: 700px;
+      .cta-inner {
+        max-width: 560px;
         margin: 0 auto;
-        position: relative;
-        overflow: hidden;
       }
 
-      .cta-box::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px; height: 300px;
-        background: radial-gradient(ellipse at center, rgba(168,85,247,0.15), transparent 70%);
-        pointer-events: none;
-      }
-
-      .cta-box h2 {
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-        font-weight: 900;
-        letter-spacing: -0.03em;
+      .cta-inner h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 300;
+        line-height: 1.15;
         margin-bottom: 16px;
+        color: var(--text);
       }
 
-      .cta-box p {
+      .cta-inner h2 em {
+        font-style: italic;
+        color: var(--sage-dk);
+      }
+
+      .cta-inner p {
+        font-size: 0.95rem;
         color: var(--muted);
-        font-size: 1rem;
-        margin-bottom: 36px;
-        line-height: 1.7;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-weight: 300;
       }
 
       .email-form {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         max-width: 420px;
         margin: 0 auto;
       }
 
       .email-input {
         flex: 1;
-        background: rgba(255,255,255,0.06);
+        background: #fff;
         border: 1px solid var(--border);
         border-radius: 50px;
-        padding: 12px 20px;
+        padding: 13px 22px;
         color: var(--text);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         font-family: inherit;
         outline: none;
-        transition: border-color 0.2s;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       }
 
       .email-input::placeholder { color: var(--muted); }
-      .email-input:focus { border-color: rgba(168,85,247,0.5); }
+      .email-input:focus {
+        border-color: var(--sage);
+        box-shadow: 0 0 0 3px rgba(122,158,126,0.12);
+      }
 
       /* ── FOOTER ── */
       footer {
-        padding: 48px 24px 32px;
+        padding: 48px 32px 36px;
         border-top: 1px solid var(--border);
         position: relative;
         z-index: 1;
+        background: var(--bg-card);
       }
 
       .footer-shell {
-        max-width: 1100px;
+        max-width: 1080px;
         margin: 0 auto;
         display: flex;
         align-items: center;
@@ -734,13 +778,15 @@
       }
 
       .footer-copy {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         color: var(--muted);
+        margin-top: 6px;
+        font-weight: 300;
       }
 
       .footer-links {
         display: flex;
-        gap: 24px;
+        gap: 28px;
         list-style: none;
       }
 
@@ -748,7 +794,7 @@
         color: var(--muted);
         text-decoration: none;
         font-size: 0.82rem;
-        font-weight: 500;
+        font-weight: 400;
         transition: color 0.2s;
       }
       .footer-links a:hover { color: var(--text); }
@@ -756,56 +802,89 @@
       /* ── SCROLL REVEAL ── */
       .reveal {
         opacity: 0;
-        transform: translateY(32px);
-        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(24px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal.visible { opacity: 1; transform: translateY(0); }
       .reveal-delay-1 { transition-delay: 0.1s; }
       .reveal-delay-2 { transition-delay: 0.2s; }
       .reveal-delay-3 { transition-delay: 0.3s; }
       .reveal-delay-4 { transition-delay: 0.4s; }
+      .reveal-delay-5 { transition-delay: 0.5s; }
 
       /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
-        .hero-grid { grid-template-columns: 1fr; text-align: center; }
-        .hero p { margin: 0 auto 36px; }
-        .hero-actions { justify-content: center; }
-        .hero-trust { justify-content: center; }
-        .hero-visual { display: none; }
-        .steps-grid { grid-template-columns: 1fr; }
-        .features-grid { grid-template-columns: 1fr; }
-        .feature-card-wide { grid-column: span 1; }
-        .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+        .hero { padding: 130px 24px 80px; }
+        .how-inner { grid-template-columns: 1fr; gap: 48px; }
+        .features-grid { grid-template-columns: 1fr 1fr; }
+        .features-header { grid-template-columns: 1fr; }
         .desktop-nav { display: none; }
       }
 
-      @media (max-width: 480px) {
-        .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+      @media (max-width: 600px) {
+        .features-grid { grid-template-columns: 1fr; }
+        .hero-visual { flex-direction: column; align-items: center; }
+        .phone-wrap.delay { display: none; }
         .email-form { flex-direction: column; }
-        .hero { padding: 120px 20px 60px; }
+        .hero-trust { gap: 16px; }
       }
+      /* ── WEAVE ANIMATION ── */
+      .weave-wrap {
+        width: 100%;
+        max-width: 700px;
+        margin: 48px auto 0;
+        position: relative;
+      }
+
+      #weaveCanvas {
+        width: 100%;
+        height: 90px;
+        display: block;
+        opacity: 0.85;
+      }
+
     </style>
   </head>
   <body>
-
-    <!-- BACKGROUND BLOBS -->
-    <div class="blob blob-1" aria-hidden="true"></div>
-    <div class="blob blob-2" aria-hidden="true"></div>
-    <div class="blob blob-3" aria-hidden="true"></div>
 
     <!-- HEADER -->
     <header class="site-header">
       <div class="nav-shell">
         <a href="#" class="brand" aria-label="Weavr home">
-          <div class="brand-icon">🧵</div>
-          Weavr
+          <!-- Inline SVG logo — elegant minimal needle + W -->
+          <svg class="brand-logo" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="38" fill="#f3f0ea" stroke="#d6e0d7" stroke-width="1"/>
+            <!-- W thread — sage green, thin, elegant -->
+            <polyline points="14,26 24,54 33,36 42,54 52,26"
+              fill="none" stroke="#4a7050" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <animate attributeName="stroke-dasharray" from="0,200" to="200,0"
+                dur="1.4s" begin="0s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+            </polyline>
+            <!-- Needle — thin silver, diagonal -->
+            <line x1="52" y1="24" x2="66" y2="60"
+              stroke="#b0b8b2" stroke-width="1.8" stroke-linecap="round">
+              <animate attributeName="stroke-dasharray" from="0,80" to="80,0"
+                dur="1.4s" begin="0s" fill="freeze"/>
+            </line>
+            <!-- Needle tip -->
+            <circle cx="66" cy="60" r="1.4" fill="#9aaa9e"/>
+            <!-- Needle eye -->
+            <ellipse cx="53.5" cy="26" rx="1.4" ry="2.5"
+              fill="none" stroke="#9aaa9e" stroke-width="1"/>
+            <!-- Thread through eye -->
+            <path d="M53.5 28.5 Q49 32 47 37"
+              fill="none" stroke="#7a9e7e" stroke-width="1.2"
+              stroke-linecap="round" opacity="0.7"/>
+          </svg>
+          <span class="brand-name">Weavr</span>
         </a>
-        <nav class="desktop-nav" aria-label="Primary navigation">
+        <nav class="desktop-nav" aria-label="Primary">
           <a href="#how-it-works">How it works</a>
           <a href="#features">Features</a>
           <a href="#occasions">Occasions</a>
         </nav>
-        <a class="btn btn-primary" href="#waitlist" style="margin-left: auto;">
+        <a class="btn btn-primary" href="#waitlist" style="margin-left:auto; font-size:0.82rem; padding: 9px 20px;">
           Join Waitlist
         </a>
       </div>
@@ -813,150 +892,148 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="section-shell hero-grid">
-        <!-- Copy -->
-        <div class="hero-copy">
-          <div class="hero-kicker reveal">
-            <span class="live-dot"></span>
-            Coming soon · Free to start
-          </div>
-          <h1 class="reveal reveal-delay-1">
-            Weave your<br><span>special moments</span><br>beautifully.
-          </h1>
-          <p class="reveal reveal-delay-2">
-            Weavr is the fastest way to turn your photos into stunning social media posts — for birthdays, anniversaries, graduations, and every day worth remembering.
-          </p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a href="#waitlist" class="btn btn-primary">🎉 Join the Waitlist</a>
-            <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
-          </div>
-          <ul class="hero-trust reveal reveal-delay-4">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-              Your photos stay private
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M11 19H6.5a3.5 3.5 0 1 1 0-7H9"/><path d="M13 5h1.5a3.5 3.5 0 0 1 0 7H13"/></svg>
-              No cloud storage needed
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              Done in under 60 seconds
-            </li>
-          </ul>
+      <div class="section-shell">
+        <div class="hero-badge reveal">
+          <span class="pulse"></span>
+          Coming soon · Free to start
+        </div>
+        <h1 class="reveal reveal-delay-1">
+          Weave your<br><em>special moments</em><br>beautifully.
+        </h1>
+        <p class="reveal reveal-delay-2">
+          The simplest way to turn your photos into elegant social media posts — for birthdays, anniversaries, and every day worth remembering.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+          <a href="#how-it-works" class="btn btn-outline">See how it works</a>
+        </div>
+        <ul class="hero-trust reveal reveal-delay-4">
+          <li><span class="trust-dot"></span>Photos stay on your device</li>
+          <li><span class="trust-dot"></span>No cloud storage needed</li>
+          <li><span class="trust-dot"></span>Done in under 60 seconds</li>
+        </ul>
+
+        <!-- ── WEAVE ANIMATION ── -->
+        <div class="weave-wrap reveal reveal-delay-5">
+          <canvas id="weaveCanvas"></canvas>
         </div>
 
-        <!-- Visual -->
-        <div class="hero-visual reveal reveal-delay-2">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="phone-app-bar">
-                <span style="color: var(--purple-lt); font-size:0.7rem;">✦ Weavr</span>
-                <span>🎂 Birthday</span>
-              </div>
-              <div class="phone-photo-grid">
-                <div class="phone-photo phone-photo-big">
-                  <div class="phone-photo-fill photo-1">🥳</div>
-                  <span class="phone-overlay-tag">Main photo</span>
+        <!-- Phone mockup -->
+        <div class="hero-visual reveal reveal-delay-5">
+          <div class="phone-wrap delay">
+            <div class="phone">
+              <div class="phone-bar"></div>
+              <div class="phone-screen">
+                <div class="phone-tag"><span>💍 Anniversary</span><span style="color:var(--sage-lt)">✦</span></div>
+                <div class="phone-photos">
+                  <div class="phone-photo phone-photo-tall pp4">🌸</div>
+                  <div class="phone-photo pp5" style="height:60px;">🕯️</div>
+                  <div class="phone-photo pp2" style="height:60px;">🍷</div>
                 </div>
-                <div class="phone-photo phone-photo-sm">
-                  <div class="phone-photo-fill photo-2">🎆</div>
+                <div class="phone-caption-box">
+                  <strong>Caption:</strong> "Seven years of choosing each other, every single day. ♡"
                 </div>
-                <div class="phone-photo phone-photo-sm">
-                  <div class="phone-photo-fill photo-3">🎁</div>
-                </div>
+                <div class="phone-btn">✦ Save & Share</div>
               </div>
-              <div class="phone-caption">
-                <span>AI Caption:</span> "Another year older, another year more grateful. Happy birthday to me! 🎂✨"
-              </div>
-              <div class="phone-action-btn">✨ Save &amp; Share</div>
             </div>
           </div>
-
-          <!-- Float cards -->
-          <div class="float-card float-card-1">
-            <span class="float-emoji">🎉</span>
-            <div>
-              <div style="font-size:0.75rem;font-weight:800;">Happy Birthday!</div>
-              <div style="font-size:0.65rem;color:var(--muted);">Template applied</div>
+          <div class="phone-wrap">
+            <div class="phone" style="width:220px;">
+              <div class="phone-bar"></div>
+              <div class="phone-screen">
+                <div class="phone-tag"><span>🎂 Birthday</span><span style="color:var(--sage-lt)">✦</span></div>
+                <div class="phone-photos">
+                  <div class="phone-photo phone-photo-tall pp1">🎉</div>
+                  <div class="phone-photo pp2" style="height:60px;">🎁</div>
+                  <div class="phone-photo pp3" style="height:60px;">🎆</div>
+                </div>
+                <div class="phone-caption-box">
+                  <strong>Caption:</strong> "Another year older, infinitely more grateful. Happy birthday to me 🎂"
+                </div>
+                <div class="phone-btn">✦ Save & Share</div>
+              </div>
             </div>
-            <span class="float-badge">Done</span>
           </div>
-
-          <div class="float-card float-card-2">
-            <span class="float-emoji">🖼️</span>
-            <div>
-              <div style="font-size:0.75rem;font-weight:800;">3 photos woven</div>
-              <div style="font-size:0.65rem;color:var(--muted);">Ready to share</div>
+          <div class="phone-wrap delay">
+            <div class="phone">
+              <div class="phone-bar"></div>
+              <div class="phone-screen">
+                <div class="phone-tag"><span>🎓 Graduation</span><span style="color:var(--sage-lt)">✦</span></div>
+                <div class="phone-photos">
+                  <div class="phone-photo phone-photo-tall pp3">👩‍🎓</div>
+                  <div class="phone-photo pp1" style="height:60px;">🏆</div>
+                  <div class="phone-photo pp5" style="height:60px;">📜</div>
+                </div>
+                <div class="phone-caption-box">
+                  <strong>Caption:</strong> "Years of hard work, one beautiful moment. We made it! 🎓"
+                </div>
+                <div class="phone-btn">✦ Save & Share</div>
+              </div>
             </div>
-          </div>
-
-          <div class="float-card float-card-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--purple-lt)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-            Saved to your gallery
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee-wrap" aria-label="Supported occasions">
-      <div class="marquee-track">
-        <ul class="marquee-list">
-          <li class="marquee-item"><span class="marquee-dot" style="background:#a855f7"></span>🎂 Birthdays</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#ec4899"></span>💍 Anniversaries</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f59e0b"></span>🎓 Graduations</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#22c55e"></span>🎄 Holidays</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#3b82f6"></span>👶 Baby Showers</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f43f5e"></span>💕 Valentine's Day</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#8b5cf6"></span>🎊 Reunions</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#06b6d4"></span>🏆 Achievements</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#d946ef"></span>🎭 Events</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f97316"></span>🌟 Milestones</li>
-        </ul>
-        <!-- Duplicate for seamless loop -->
-        <ul class="marquee-list" aria-hidden="true">
-          <li class="marquee-item"><span class="marquee-dot" style="background:#a855f7"></span>🎂 Birthdays</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#ec4899"></span>💍 Anniversaries</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f59e0b"></span>🎓 Graduations</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#22c55e"></span>🎄 Holidays</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#3b82f6"></span>👶 Baby Showers</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f43f5e"></span>💕 Valentine's Day</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#8b5cf6"></span>🎊 Reunions</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#06b6d4"></span>🏆 Achievements</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#d946ef"></span>🎭 Events</li>
-          <li class="marquee-item"><span class="marquee-dot" style="background:#f97316"></span>🌟 Milestones</li>
-        </ul>
-      </div>
-    </div>
+
 
     <!-- HOW IT WORKS -->
     <section class="how-section" id="how-it-works">
-      <div class="section-shell">
-        <div class="how-header">
-          <div class="section-label reveal">✦ Simple by design</div>
-          <h2 class="section-title reveal reveal-delay-1">Done in three steps.</h2>
-          <p class="section-desc reveal reveal-delay-2">No design skills. No complex tools. Just pick, personalize, and post.</p>
+      <div class="section-shell how-inner">
+        <div>
+          <div class="section-eyebrow reveal">Simple by design</div>
+          <h2 class="section-title reveal reveal-delay-1">Three steps.<br><em>One beautiful post.</em></h2>
+          <p class="section-desc reveal reveal-delay-2" style="margin-bottom:48px;">No design skills. No complex menus. Just your photos and the moment you want to remember.</p>
+          <div class="steps-list">
+            <div class="step reveal reveal-delay-2">
+              <div class="step-num">01</div>
+              <div class="step-body">
+                <h3>Pick your photos</h3>
+                <p>Choose 1–5 photos from your gallery. Your photos stay on your device — private, always.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-3">
+              <div class="step-num">02</div>
+              <div class="step-body">
+                <h3>Choose your occasion</h3>
+                <p>Select the moment — birthday, anniversary, graduation. Weavr applies a beautiful layout instantly.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-4">
+              <div class="step-num">03</div>
+              <div class="step-body">
+                <h3>Save & share</h3>
+                <p>Add a name or message, save your post, and share anywhere. Done in under 60 seconds.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="steps-grid">
-          <div class="step-card reveal">
-            <div class="step-num">01</div>
-            <div class="step-icon" style="background: rgba(168,85,247,0.15);">📸</div>
-            <h3>Pick your photos</h3>
-            <p>Select 1–5 photos straight from your phone gallery. Your photos never leave your device — total privacy, always.</p>
+        <div class="how-visual reveal reveal-delay-2">
+          <div class="how-label">Preview</div>
+          <div class="how-visual-row">
+            <div class="how-chip active">🎂 Birthday</div>
+            <div class="how-chip">💍 Anniversary</div>
+            <div class="how-chip">🎓 Graduation</div>
           </div>
-          <div class="step-card reveal reveal-delay-1">
-            <div class="step-num">02</div>
-            <div class="step-icon" style="background: rgba(236,72,153,0.15);">🎨</div>
-            <h3>Choose your occasion</h3>
-            <p>Pick the moment — birthday, anniversary, graduation, and more. Weavr instantly applies the perfect layout and style.</p>
+          <div class="how-preview">
+            <div class="how-preview-grid">
+              <div class="how-photo how-photo-main">🎉</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="how-photo how-photo-sm1">🎁</div>
+                <div class="how-photo how-photo-sm2">🎂</div>
+              </div>
+            </div>
+            <div class="how-label">Caption</div>
+            <div class="how-text">"Another trip around the sun, another year of beautiful memories. Happy birthday! 🎂✨"</div>
           </div>
-          <div class="step-card reveal reveal-delay-2">
-            <div class="step-num">03</div>
-            <div class="step-icon" style="background: rgba(245,158,11,0.15);">🚀</div>
-            <h3>Save &amp; share</h3>
-            <p>Add your name or message, save the final post to your gallery, and share it anywhere. Ready in under 60 seconds.</p>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;font-size:0.75rem;color:var(--muted);">
+              <div style="font-weight:600;color:var(--text);margin-bottom:4px;font-size:0.8rem;">Add a message</div>
+              Happy Birthday, Maria! 🎉
+            </div>
+            <div style="background:var(--sage-dk);border-radius:12px;padding:14px 18px;font-size:0.8rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;white-space:nowrap;">
+              ✦ Done
+            </div>
           </div>
         </div>
       </div>
@@ -965,39 +1042,46 @@
     <!-- FEATURES -->
     <section class="features-section" id="features">
       <div class="section-shell">
-        <div class="section-label reveal">✦ Built for you</div>
-        <h2 class="section-title reveal reveal-delay-1">Everything you need.<br>Nothing you don't.</h2>
-        <p class="section-desc reveal reveal-delay-2">Weavr is designed to be fast, private, and delightfully simple — no subscriptions required to get started.</p>
-
+        <div class="features-header">
+          <div>
+            <div class="section-eyebrow reveal">Built for you</div>
+            <h2 class="section-title reveal reveal-delay-1">Everything you need.<br><em>Nothing you don't.</em></h2>
+          </div>
+          <p class="section-desc reveal reveal-delay-2">Designed to be fast, private, and effortlessly beautiful — no subscriptions required to start.</p>
+        </div>
         <div class="features-grid">
           <div class="feature-card reveal">
-            <div class="feature-icon fi-purple">🧵</div>
+            <span class="feature-icon">🖼️</span>
             <h3>Beautiful Templates</h3>
-            <p>Dozens of occasion-specific layouts designed by hand. Every template looks polished straight out of the box — no tweaking needed.</p>
-            <span class="feature-tag">Launching with 20+ templates</span>
+            <p>Occasion-specific layouts, designed by hand. Every template is polished straight out of the box.</p>
+            <span class="feature-tag">20+ templates at launch</span>
           </div>
           <div class="feature-card reveal reveal-delay-1">
-            <div class="feature-icon fi-pink">🔒</div>
-            <h3>100% Private</h3>
-            <p>Your photos are processed entirely on your device. No uploads, no cloud storage, no data collection. What's yours stays yours.</p>
+            <span class="feature-icon">🔒</span>
+            <h3>Fully Private</h3>
+            <p>Photos are processed entirely on your device. No uploads, no cloud, no data collection. Ever.</p>
             <span class="feature-tag">Local-first</span>
           </div>
           <div class="feature-card reveal reveal-delay-2">
-            <div class="feature-icon fi-gold">✨</div>
-            <h3>AI-Powered Captions</h3>
-            <p>Let AI write the perfect caption for your post. Just pick the tone — heartfelt, funny, or short and sweet — and you're done.</p>
+            <span class="feature-icon">✦</span>
+            <h3>AI Captions</h3>
+            <p>Let AI write the perfect caption — heartfelt, playful, or short and sweet. You choose the tone.</p>
             <span class="feature-tag">Powered by Gemini</span>
           </div>
           <div class="feature-card reveal reveal-delay-3">
-            <div class="feature-icon fi-teal">📐</div>
-            <h3>Platform-Ready Sizes</h3>
-            <p>Export your posts perfectly sized for Instagram, Facebook, TikTok Stories, and more. No more cropping or resizing.</p>
+            <span class="feature-icon">📐</span>
+            <h3>Platform-Ready</h3>
+            <p>Export perfectly sized for Instagram, Facebook, TikTok Stories. No cropping or resizing needed.</p>
           </div>
-          <div class="feature-card feature-card-wide reveal">
-            <div class="feature-icon fi-blue">⚡</div>
-            <h3>Blazing Fast — Under 60 Seconds</h3>
-            <p>From picking photos to sharing your post — Weavr is built for speed. No endless menus, no tutorials, no overwhelm. Just your moment, beautifully presented, in less time than it takes to write a caption.</p>
-            <span class="feature-tag">Seriously fast</span>
+          <div class="feature-card reveal reveal-delay-4">
+            <span class="feature-icon">⚡</span>
+            <h3>Under 60 Seconds</h3>
+            <p>From picking photos to sharing — Weavr is built for speed. No tutorials, no overwhelm.</p>
+          </div>
+          <div class="feature-card reveal reveal-delay-5">
+            <span class="feature-icon">🎨</span>
+            <h3>Your Style</h3>
+            <p>Customize colors, fonts, and layouts to match your personal aesthetic with just a few taps.</p>
           </div>
         </div>
       </div>
@@ -1006,74 +1090,44 @@
     <!-- OCCASIONS -->
     <section class="occasions-section" id="occasions">
       <div class="section-shell">
-        <div class="how-header">
-          <div class="section-label reveal">✦ Every moment matters</div>
-          <h2 class="section-title reveal reveal-delay-1">Made for your special days.</h2>
-          <p class="section-desc reveal reveal-delay-2">From big milestones to everyday celebrations — Weavr has a template for every occasion.</p>
-        </div>
+        <div class="section-eyebrow reveal">Every moment matters</div>
+        <h2 class="section-title reveal reveal-delay-1">Made for your <em>special days.</em></h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin: 0 auto;">From big milestones to quiet celebrations — Weavr has a template for every occasion worth sharing.</p>
         <div class="occasions-grid">
-          <div class="occasion-card reveal">
-            <span class="occasion-emoji">🎂</span>
-            <h3>Birthdays</h3>
-            <p>Make every year unforgettable</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-1">
-            <span class="occasion-emoji">💍</span>
-            <h3>Anniversaries</h3>
-            <p>Celebrate love, every time</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-2">
-            <span class="occasion-emoji">🎓</span>
-            <h3>Graduations</h3>
-            <p>Honor the achievement</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-3">
-            <span class="occasion-emoji">👶</span>
-            <h3>Baby Showers</h3>
-            <p>Welcome the little ones</p>
-          </div>
-          <div class="occasion-card reveal">
-            <span class="occasion-emoji">🎄</span>
-            <h3>Holidays</h3>
-            <p>Spread seasonal joy</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-1">
-            <span class="occasion-emoji">💕</span>
-            <h3>Valentine's</h3>
-            <p>Show your love beautifully</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-2">
-            <span class="occasion-emoji">🏆</span>
-            <h3>Achievements</h3>
-            <p>Celebrate your wins</p>
-          </div>
-          <div class="occasion-card reveal reveal-delay-3">
-            <span class="occasion-emoji">🌟</span>
-            <h3>Milestones</h3>
-            <p>Any day worth remembering</p>
-          </div>
+          <div class="occasion-pill reveal">🎂 Birthdays</div>
+          <div class="occasion-pill reveal reveal-delay-1">💍 Anniversaries</div>
+          <div class="occasion-pill reveal reveal-delay-2">🎓 Graduations</div>
+          <div class="occasion-pill reveal reveal-delay-3">👶 Baby Showers</div>
+          <div class="occasion-pill reveal">🎄 Holidays</div>
+          <div class="occasion-pill reveal reveal-delay-1">💕 Valentine's Day</div>
+          <div class="occasion-pill reveal reveal-delay-2">🏆 Achievements</div>
+          <div class="occasion-pill reveal reveal-delay-3">🌟 Milestones</div>
+          <div class="occasion-pill reveal">🎊 Reunions</div>
+          <div class="occasion-pill reveal reveal-delay-1">🌸 New Beginnings</div>
+          <div class="occasion-pill reveal reveal-delay-2">🍾 Celebrations</div>
+          <div class="occasion-pill reveal reveal-delay-3">✈️ Travel Memories</div>
         </div>
       </div>
     </section>
 
-    <!-- CTA / WAITLIST -->
+    <!-- CTA -->
     <section class="cta-section" id="waitlist">
       <div class="section-shell">
-        <div class="cta-box reveal">
-          <div class="hero-kicker" style="justify-content:center; margin-bottom: 20px;">
-            <span class="live-dot"></span>
-            Currently in development
+        <div class="cta-inner">
+          <div class="hero-badge reveal" style="justify-content:center;">
+            <span class="pulse"></span>
+            In development
           </div>
-          <h2>Be the first to <span style="background: linear-gradient(135deg, var(--purple-lt), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Weavr</span> your moments.</h2>
-          <p>Join the waitlist and get early access when we launch. Free to start, always.</p>
-          <form class="email-form" onsubmit="handleSubmit(event)">
-            <input class="email-input" type="email" placeholder="your@email.com" required autocomplete="email" />
-            <button class="btn btn-primary" type="submit">Notify me 🎉</button>
+          <h2 class="reveal reveal-delay-1">Be the first to<br><em>Weavr</em> your moments.</h2>
+          <p class="reveal reveal-delay-2">Join the waitlist and get early access when we launch. Free to start, always.</p>
+          <form class="email-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
+            <input class="email-input" type="email" placeholder="your@email.com" required />
+            <button class="btn btn-primary" type="submit">Notify me</button>
           </form>
-          <p id="form-success" style="display:none; margin-top:16px; color: #4ade80; font-size:0.88rem; font-weight:600;">
-            ✅ You're on the list! We'll reach out soon.
+          <p id="form-success" style="display:none;margin-top:16px;color:var(--sage-dk);font-size:0.85rem;font-weight:500;">
+            ✓ You're on the list. We'll be in touch soon.
           </p>
-          <p style="margin-top:20px; font-size:0.75rem; color:var(--muted);">No spam. Unsubscribe anytime.</p>
+          <p class="reveal reveal-delay-4" style="margin-top:18px;font-size:0.75rem;color:var(--muted);">No spam. Unsubscribe anytime.</p>
         </div>
       </div>
     </section>
@@ -1082,55 +1136,254 @@
     <footer>
       <div class="footer-shell">
         <div>
-          <a href="#" class="brand" style="margin-bottom: 8px; display:inline-flex;">
-            <div class="brand-icon" style="width:28px;height:28px;font-size:14px;">🧵</div>
-            Weavr
+          <a href="#" class="brand">
+            <svg style="width:28px;height:28px;" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#f3f0ea" stroke="#d6e0d7" stroke-width="1"/>
+              <polyline points="14,26 24,54 33,36 42,54 52,26" fill="none" stroke="#4a7050" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="52" y1="24" x2="66" y2="60" stroke="#b0b8b2" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="66" cy="60" r="1.4" fill="#9aaa9e"/>
+              <ellipse cx="53.5" cy="26" rx="1.4" ry="2.5" fill="none" stroke="#9aaa9e" stroke-width="1"/>
+            </svg>
+            <span class="brand-name" style="font-size:1.15rem;">Weavr</span>
           </a>
-          <p class="footer-copy" style="margin-top:8px;">© 2026 Weavr. All rights reserved.</p>
+          <p class="footer-copy">© 2026 Weavr. All rights reserved.</p>
         </div>
         <ul class="footer-links">
           <li><a href="#how-it-works">How it works</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#occasions">Occasions</a></li>
-          <li><a href="#waitlist">Join waitlist</a></li>
+          <li><a href="#waitlist">Waitlist</a></li>
         </ul>
       </div>
     </footer>
 
     <script>
-      // ── Scroll Reveal ──
+      // Scroll reveal
       const reveals = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      const obs = new IntersectionObserver(
+        entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
       );
-      reveals.forEach(el => observer.observe(el));
+      reveals.forEach(el => obs.observe(el));
 
-      // Trigger hero elements on load
       window.addEventListener('load', () => {
         document.querySelectorAll('.hero .reveal').forEach((el, i) => {
-          setTimeout(() => el.classList.add('visible'), i * 120);
+          setTimeout(() => el.classList.add('visible'), i * 100);
         });
       });
 
-      // ── Waitlist Form ──
+      // Waitlist form
       function handleSubmit(e) {
         e.preventDefault();
-        const form = e.target;
-        const success = document.getElementById('form-success');
-        form.style.display = 'none';
-        success.style.display = 'block';
+        e.target.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
       }
 
-      // ── Sticky header opacity on scroll ──
+      // Sticky header
       const header = document.querySelector('.site-header');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-          header.style.background = 'rgba(9,4,15,0.85)';
-        } else {
-          header.style.background = 'rgba(9,4,15,0.6)';
-        }
+        header.style.background = window.scrollY > 10
+          ? 'rgba(250,248,244,0.95)'
+          : 'rgba(250,248,244,0.85)';
       }, { passive: true });
+
+      // How it works chip interaction
+      document.querySelectorAll('.how-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.how-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        });
+      });
+
+      // ── WEAVE ANIMATION ──
+      (function() {
+        const canvas = document.getElementById('weaveCanvas');
+        const ctx    = canvas.getContext('2d');
+
+        const W_COUNT  = 18;   // number of vertical warp threads
+        const ROWS     = 3;    // weft rows to draw before reset
+        const SPEED    = 2.2;  // needle px per frame
+        const ROW_H    = 22;   // vertical spacing between weft rows
+        const THREAD_W = 1.5;
+
+        // Colors — sage palette
+        const WARP_COLOR   = 'rgba(168,197,160,0.35)';
+        const WEFT_COLOR   = '#7a9e7e';
+        const NEEDLE_COLOR = '#c8cfc9';
+        const NEEDLE_TIP   = '#a8b5a9';
+        const EYE_COLOR    = 'rgba(74,112,80,0.6)';
+
+        let W, H, warpX = [], needleX, needleY, row, phase, weftPoints, going;
+
+        function setup() {
+          const rect = canvas.getBoundingClientRect();
+          W = Math.round(rect.width);
+          H = 90;
+          canvas.width  = W * devicePixelRatio;
+          canvas.height = H * devicePixelRatio;
+          ctx.scale(devicePixelRatio, devicePixelRatio);
+
+          // Evenly space warp threads
+          warpX = [];
+          const pad = 28;
+          for (let i = 0; i < W_COUNT; i++) {
+            warpX.push(pad + (i / (W_COUNT - 1)) * (W - pad * 2));
+          }
+
+          reset();
+        }
+
+        function reset() {
+          row       = 0;
+          phase     = 0; // 0 = going right, 1 = going left
+          needleX   = warpX[0] - 20;
+          needleY   = startY(0);
+          weftPoints = [[needleX, needleY]];
+          going      = 1; // 1 = right, -1 = left
+        }
+
+        function startY(r) {
+          const top = (H - (ROWS - 1) * ROW_H) / 2;
+          return top + r * ROW_H;
+        }
+
+        // Which side of a warp thread is the needle on?
+        function overUnder(warpIdx, rowIdx) {
+          // Alternate: odd rows offset by 1
+          return (warpIdx + rowIdx) % 2 === 0;
+        }
+
+        function drawWarp() {
+          warpX.forEach((x) => {
+            ctx.beginPath();
+            ctx.strokeStyle = WARP_COLOR;
+            ctx.lineWidth   = THREAD_W;
+            ctx.moveTo(x, 6);
+            ctx.lineTo(x, H - 6);
+            ctx.stroke();
+          });
+        }
+
+        function drawWeft() {
+          if (weftPoints.length < 2) return;
+          ctx.beginPath();
+          ctx.strokeStyle = WEFT_COLOR;
+          ctx.lineWidth   = THREAD_W + 0.5;
+          ctx.lineJoin    = 'round';
+          ctx.lineCap     = 'round';
+          ctx.moveTo(weftPoints[0][0], weftPoints[0][1]);
+          for (let i = 1; i < weftPoints.length; i++) {
+            ctx.lineTo(weftPoints[i][0], weftPoints[i][1]);
+          }
+          ctx.stroke();
+        }
+
+        function drawNeedle(x, y) {
+          const len   = 32;
+          const angle = going > 0 ? 0.18 : Math.PI - 0.18; // slight tilt in direction of travel
+          const nx    = Math.cos(angle);
+          const ny    = Math.sin(angle);
+
+          // Needle body
+          ctx.beginPath();
+          ctx.strokeStyle = NEEDLE_COLOR;
+          ctx.lineWidth   = 3.2;
+          ctx.lineCap     = 'round';
+          ctx.moveTo(x - nx * (len / 2), y - ny * (len / 2));
+          ctx.lineTo(x + nx * (len / 2), y + ny * (len / 2));
+          ctx.stroke();
+
+          // Needle tip (sharp end — ahead)
+          const tipX = x + nx * (len / 2 + 4);
+          const tipY = y + ny * (len / 2 + 4);
+          ctx.beginPath();
+          ctx.fillStyle = NEEDLE_TIP;
+          ctx.arc(tipX, tipY, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Needle eye (tail end)
+          const eyeX = x - nx * (len / 2 - 5);
+          const eyeY = y - ny * (len / 2 - 5);
+          ctx.beginPath();
+          ctx.strokeStyle = EYE_COLOR;
+          ctx.lineWidth   = 1.2;
+          ctx.ellipse(eyeX, eyeY, 2.5, 1.2, angle, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Thread from eye trailing back
+          ctx.beginPath();
+          ctx.strokeStyle = WEFT_COLOR;
+          ctx.lineWidth   = 1;
+          ctx.lineCap     = 'round';
+          ctx.moveTo(eyeX, eyeY);
+          ctx.lineTo(eyeX - nx * 8, eyeY - ny * 8);
+          ctx.stroke();
+        }
+
+        function tick() {
+          ctx.clearRect(0, 0, W, H);
+          drawWarp();
+          drawWeft();
+          drawNeedle(needleX, needleY);
+
+          // Advance needle
+          needleX += SPEED * going;
+
+          // Compute weave Y — bob over/under each warp thread
+          const baseY = startY(row);
+          // Find nearest warp index
+          let nearIdx = 0;
+          let nearDist = Infinity;
+          warpX.forEach((wx, i) => {
+            const d = Math.abs(wx - needleX);
+            if (d < nearDist) { nearDist = d; nearIdx = i; }
+          });
+
+          // Over = slightly above baseline, Under = slightly below
+          const bobAmp = 5;
+          const isOver = overUnder(nearIdx, row);
+          const t = nearDist / ((warpX[1] || 40) - (warpX[0] || 0));
+          const bob = isOver ? -bobAmp * (1 - Math.min(t, 1)) : bobAmp * (1 - Math.min(t, 1));
+          needleY = baseY + bob;
+
+          weftPoints.push([needleX, needleY]);
+
+          // Check if row is done
+          const done = going > 0
+            ? needleX >= warpX[W_COUNT - 1] + 24
+            : needleX <= warpX[0] - 24;
+
+          if (done) {
+            row++;
+            if (row >= ROWS) {
+              // Fade out and restart
+              setTimeout(() => {
+                reset();
+              }, 600);
+              // Let last frame linger
+              requestAnimationFrame(() => {});
+              return;
+            }
+            going   = -going;
+            needleX = going > 0 ? warpX[0] - 20 : warpX[W_COUNT - 1] + 20;
+            needleY = startY(row);
+            weftPoints.push([needleX, needleY]);
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // Boot
+        window.addEventListener('load', () => {
+          setup();
+          tick();
+        });
+
+        window.addEventListener('resize', () => {
+          setup();
+        });
+      })();
+
     </script>
   </body>
 </html>
